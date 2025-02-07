@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYYZZO - Coming Soon</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #000428, #004e92);
+            color: #0ff;
+            padding: 50px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            animation: neonGlow 1.5s infinite alternate;
+        }
+        @keyframes neonGlow {
+            from { text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #00f; }
+            to { text-shadow: 0 0 10px #00f, 0 0 20px #0ff, 0 0 30px #00f; }
+        }
+        #countdown {
+            font-size: 2.5rem;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ff0;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .logo {
+            width: 250px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .social-links a {
+            color: #ff0;
+            text-decoration: none;
+            font-size: 1.8rem;
+            margin: 15px;
+            transition: transform 0.3s, color 0.3s;
+        }
+        .social-links a:hover {
+            transform: scale(1.2);
+            color: #0ff;
+        }
+    </style>
+</head>
+<body>
+    <img src="logo.png" alt="KYYZZO Logo" class="logo">  
+    <h1>KYYZZO is Launching Soon! 🚀</h1>
+    <p>Stay tuned! Join our Telegram and follow us on social media.</p>
+    <div id="countdown"></div>
+    <div class="social-links">
+        <a href="#" target="_blank">📢 Telegram</a>
+        <a href="#" target="_blank">🐦 Twitter</a>
+        <a href="#" target="_blank">📷 Instagram</a>
+    </div>
+
+    <script>
+        function countdown() {
+            const launchDate = new Date("2025-02-15T00:00:00").getTime();
+            const timer = setInterval(function () {
+                const now = new Date().getTime();
+                const distance = launchDate - now;
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById("countdown").innerHTML = `🚀 ${days}d ${hours}h ${minutes}m ${seconds}s left!`;
+                
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("countdown").innerHTML = "🚀 KYYZZO is LIVE!";
+                }
+            }, 1000);
+        }
+        countdown();
+    </script>
+</body>
+</html>
